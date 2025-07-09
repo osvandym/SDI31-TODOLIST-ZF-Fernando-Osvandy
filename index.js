@@ -17,13 +17,13 @@
     - Set values to default
 */
 /* ========TASK FUNCTIONALITY========= */
-/* • Strikethrough 'completed' tasks
+/* DONE Strikethrough 'completed' tasks
     - Event Check box click occurs
     - Get row ID
     - Get the second child
     - Toggle completed class on that child
 */
-/* • Delete tasks
+/* DONE Delete tasks
     - On image click occurs
     - Get parent <tr> by ID
       OPTIONS TO GRAB CORRECT TABLE ROW
@@ -51,13 +51,14 @@ const create_NewTask = (() => {
           <td><input type="checkbox" onclick="strikethrough('${task.id}')"/></td>
           <td>${newTask}</td>
           <td><input type="date" value="${newDate}"/></td>
-          <td><input type="image" alt="delete" src="/img/delete-icon.png" width="48" height="48"/></td>
+          <td><input type="image" alt="delete" src="/img/delete-icon.png" width="48" height="48" onclick="delete_Task('${task.id}')"/></td>
     `;
 
     // Appends <tr> to <tbody> and moves it after the task creation row
     document.querySelector("#create-task").after(task);
 
     rowIdCount++ // Options: rowIdCount = rowIdCount + 1; rowIdCount += 1; rowIdCount++; ++rowIdCount; BUT NOT rowIdCount =+ 1;
+    clear_NewTask();
   };
 })();
 
@@ -66,6 +67,10 @@ const clear_NewTask = () => {
   document.querySelector('#new-date').value = '';
 }
 
-const strikethrough = ( elementID ) => {
-  document.querySelector(`#${elementID}`).
+const strikethrough = ( taskID ) => {
+  document.querySelector(`#${taskID}`).children[1].classList.toggle("completed");
+}
+
+const delete_Task = ( taskID ) => {
+  document.querySelector(`#${taskID}`).remove();
 }
