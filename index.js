@@ -16,26 +16,20 @@
     - Grab date id: new-date
     - Set values to default
 */
-/* ========TASK FUNCTIONALITY=========
-• Strikethrough 'completed' tasks
-  - Event Check box click occurs
-    - POSSIBLY: Check the check box state
-    - POSSIBLY: Check the task classes for completed
-    - POSSIBLY: If has completed && checkbox is unchecked, remove completed otherwise do nothing
-    - POSSIBLY: If does not have completed && checkbox is checked, add completed
-  - Get next sibling
-    OPTIONS TO GRAB CORRECT TABLE ROW
-      this.nexSibling
-      document.querySelector('#someID')
-  - Toggle completed class on that sibling
-
-• Delete tasks
-  - On image click occurs
-  - Get parent <tr> by ID
-    OPTIONS TO GRAB CORRECT TABLE ROW
-      this.parentElement.parentElement
-      document.querySelector('#someID')
-  - Delete the parent <>
+/* ========TASK FUNCTIONALITY========= */
+/* • Strikethrough 'completed' tasks
+    - Event Check box click occurs
+    - Get row ID
+    - Get the second child
+    - Toggle completed class on that child
+*/
+/* • Delete tasks
+    - On image click occurs
+    - Get parent <tr> by ID
+      OPTIONS TO GRAB CORRECT TABLE ROW
+        this.parentElement.parentElement
+        document.querySelector('#someID')
+    - Delete the parent <>
 */
 /*  ========STRETCH GOALS==========
 • Stretch: Store Task Data
@@ -54,7 +48,7 @@ const create_NewTask = (() => {
     let task = document.createElement("tr");
     task.id = `row-${rowIdCount}`  // Option 1: "row-" + rowIdCount; or Option 2: `row-${rowIdCount}`
     task.innerHTML = `
-          <td><input type="checkbox"/></td>
+          <td><input type="checkbox" onclick="strikethrough('${task.id}')"/></td>
           <td>${newTask}</td>
           <td><input type="date" value="${newDate}"/></td>
           <td><input type="image" alt="delete" src="/img/delete-icon.png" width="48" height="48"/></td>
@@ -70,4 +64,8 @@ const create_NewTask = (() => {
 const clear_NewTask = () => {
   document.querySelector('#new-task').value = '';
   document.querySelector('#new-date').value = '';
+}
+
+const strikethrough = ( elementID ) => {
+  document.querySelector(`#${elementID}`).
 }
