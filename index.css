@@ -1,3 +1,26 @@
 .completed {
   text-decoration: line-through;
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  color: #0000E2;
+}
+
+table {
+  border: 2px solid #2B25AD;
+  border-collapse: collapse;
+}
+
+thead {
+  border-bottom: 2px solid #2B25AD;
+  background-color: #E5E5FD;
+}
+
